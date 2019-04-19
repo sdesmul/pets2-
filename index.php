@@ -16,9 +16,12 @@ require_once('vendor/autoload.php');
 //create an instance of the Base class/ fat free object
 $f3 = Base::instance();
 
-//Define a default root, there can be multiple routes
-$f3->route('GET /', function(){
-    echo '<h1>Hello World!</h1>';
+//Define a default root
+$f3->route('GET /', function()
+{
+    echo '<h1>My Pets</h1>';
+    echo '<a href="order">Order a Pet</a>';
+
 });
 
 //run Fat-free
