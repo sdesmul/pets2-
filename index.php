@@ -24,5 +24,33 @@ $f3->route('GET /', function()
 
 });
 
+//create route that accepts an animal type
+
+$f3->route('GET /@animalType', function($f3, $params){
+    $animalType = $params['animalType'];
+
+    switch($animalType){
+        case 'cat':
+            echo "<h3>Meow!</h3>";
+            break;
+        case 'dog':
+            echo "<h3>Woof!</h3>";
+            break;
+        case 'chicken':
+            echo "<h3>Cluck!</h3>";
+            break;
+        case 'panda':
+            echo "<h3>braaahhh</h3>";
+            break;
+        case 'koala':
+            echo "<h3>Mreaaah</h3>";
+            break;
+        default:
+            $f3 ->error(404);
+
+    }
+
+});
+
 //run Fat-free
 $f3->run();
