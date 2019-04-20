@@ -6,6 +6,9 @@
  * Time: 2:16 PM
  */
 
+//Start a session
+session_start();
+
 //turn on error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -51,6 +54,29 @@ $f3->route('GET /@animalType', function($f3, $params){
     }
 
 });
+
+//define a route for order
+$f3->route('GET /order', function(){
+
+    $_SESSION['animal'] = $_GET['animal'];
+    $view= new Template();
+    echo $view->render('views/form1.html');
+});
+
+$f3->route('POST /order2', function(){
+    $_SESSION['color'] = $_POST['color'];
+    print_r($_SESSION);
+    print_r($_POST);
+    $view= new Template();
+    echo $view->render('views/form2.html');
+});
+
+$f3->route('POST /results', function(){
+    print_r($_POST);
+    $view= new Template();
+    echo $view->render('views/results.html');
+});
+
 
 //run Fat-free
 $f3->run();
